@@ -10,6 +10,8 @@ FROM development as builder
 WORKDIR /usr/src/app
 RUN rm -rf node_modules
 RUN npm ci --only=production
+RUN npm i -g prisma
+RUN prisma generate
 EXPOSE 80
 CMD [ "npm", "start" ]
  
