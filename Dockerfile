@@ -11,7 +11,7 @@ WORKDIR /usr/src/app
 RUN rm -rf node_modules
 RUN npm ci --only=production
 RUN npm i -g prisma
-RUN prisma generate --schema	./src/prisma/schema.prisma
+RUN prisma generate --schema ./src/prisma/schema.prisma
 EXPOSE 80
 CMD [ "npm", "start" ]
  
