@@ -3,7 +3,6 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install
 COPY ./src ./src
-EXPOSE 80
 CMD [ "npm", "run", "start:dev" ]
 
 FROM development as builder
@@ -12,8 +11,7 @@ RUN rm -rf node_modules
 RUN npm ci --only=production
 RUN npm i -g prisma
 RUN prisma generate --schema ./src/prisma/schema.prisma
-EXPOSE 80
-CMD [ "npm", "start" ]
+RUN npm run prisma:dbpush
  
 FROM alpine:latest as production
 RUN apk --no-cache add nodejs ca-certificates
