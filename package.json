@@ -4,7 +4,6 @@
   "description": "A starter project for Express.js with PostgreSQL and Prisma on FL0",
   "private": false,
   "scripts": {
-    "build": "npm run prisma:generate && npm run prisma:dbpush",
     "start:dev": "npm run prisma:generate && npm run prisma:dbpush && nodemon -r dotenv/config src/index.js",
     "start": "node src/index.js",
 
